@@ -31,3 +31,6 @@ steps:
 # Logging
 options:
   logging: CLOUD_LOGGING_ONLY
+  
+#Introducing bash
+ENTRYPOINT ["bash","entrypoint.prod.sh"]
