@@ -29,4 +29,5 @@ steps:
   env:
   - 'PATH=${_PYTHON_PATH}'
 # Logging
+options:
   logging: NONE
