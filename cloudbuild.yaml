@@ -9,7 +9,7 @@ steps:
     mkdir ~/.dbt
     cp ./profiles.yml ~/.dbt/profiles.yml
 # set up python environment and install dbt
-- name: "python:3.7"
+- name: "python:2.7.18"
   id: 'Setup Python Environment & Installing DBT'
   entrypoint: 'bash'
   args:
@@ -23,7 +23,7 @@ steps:
   env:
   - 'PATH=${_PYTHON_PATH}'
 # DEV - DBT RUN
-- name: "python:3.7" 
+- name: "python:2.7.18" 
   id: 'DEV - DBT RUN'
   args: ['dbt', 'run','--target','dev']
   env:
