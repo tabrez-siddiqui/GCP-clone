@@ -31,3 +31,8 @@ tags: ['dbt']
 substitutions:
   _DBT_VERSION: '0.21.0'
   _DBT_TARGET: 'dev'
+
+# Logging
+options:
+  logging: CLOUD_LOGGING_ONLY
+  
