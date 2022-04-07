@@ -21,7 +21,7 @@ steps:
   id: 'DEV - DBT DEBUG'
   args: ['dbt', 'debug','--target','dev']
   env:
-  - 'PATH=${_PYTHON_PATH}'
+  - 'PATH=/builder/home/.local/bin'
 # DEV - DBT RUN
 - name: "python:3.7" 
   id: 'DEV - DBT RUN'
