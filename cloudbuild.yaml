@@ -9,7 +9,7 @@ steps:
     mkdir ~/.dbt
     cp ./profiles.yml ~/.dbt/profiles.yml
 # set up python environment and install dbt
-- name: "python:2.7.18"
+- name: "python:3.7"
   id: 'Setup Python Environment & Installing DBT'
   entrypoint: 'bash'
   args:
@@ -17,13 +17,13 @@ steps:
   - |
     pip install dbt-bigquery --user
 # DEV - DBT DEBUG
-- name: "python:2.7.18" 
+- name: "python:3.7" 
   id: 'DEV - DBT DEBUG'
   args: ['dbt', 'debug','--target','dev']
   env:
   - 'PATH=${_PYTHON_PATH}'
 # DEV - DBT RUN
-- name: "python:2.7.18" 
+- name: "python:3.7" 
   id: 'DEV - DBT RUN'
   args: ['dbt', 'run','--target','dev']
   env:
