@@ -30,4 +30,4 @@ steps:
   - 'PATH=${_PYTHON_PATH}'
 # Logging
 options:
-  logging: NONE
+  logging: CLOUD_LOGGING_ONLY
