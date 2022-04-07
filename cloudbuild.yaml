@@ -33,4 +33,4 @@ options:
   logging: CLOUD_LOGGING_ONLY
   
 #Introducing bash
-ENTRYPOINT ["bash","entrypoint.prod.sh"]
+ENTRYPOINT: ["bash","entrypoint.prod.sh"]
