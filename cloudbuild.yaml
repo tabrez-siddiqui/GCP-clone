@@ -28,3 +28,5 @@ steps:
   args: ['dbt', 'run','--target','dev']
   env:
   - 'PATH=${_PYTHON_PATH}'
+# Logging
+  logging: NONE
