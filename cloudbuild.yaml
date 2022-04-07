@@ -1,33 +1,33 @@
+# gcloud builds submit --config=cloudbuild.yaml .
 steps:
-- name: 'ubuntu'
-  id: 'Adding dbt profile for Bigquery'
+- id: '1 Run dbt'
+  name: 'fishtownanalytics/dbt:${_DBT_VERSION}'
   entrypoint: 'bash'
   args:
-  - '-c'
-  - |
-    echo Copying ./profiles.yml to the ~/.dbt...
-    mkdir ~/.dbt
-    cp ./profiles.yml ~/.dbt/profiles.yml
-# set up python environment and install dbt
-- name: "python:3.7"
-  id: 'Setup Python Environment & Installing DBT'
-  entrypoint: 'bash'
-  args:
-  - '-c'
-  - |
-    pip install dbt-bigquery --user
-# DEV - DBT DEBUG
-- name: "python:3.7" 
-  id: 'DEV - DBT DEBUG'
-  args: ['dbt', 'debug','--target','dev']
-
-# DEV - DBT RUN
-- name: "python:3.7" 
-  id: 'DEV - DBT RUN'
-  args: ['dbt', 'run','--target','dev']
-  env:
-  - 'PATH=${_PYTHON_PATH}'
-# Logging
-options:
-  logging: CLOUD_LOGGING_ONLY
-  
+    - '-c'
+    - |-
+       dbt deps --profiles-dir .
+       if [[ $? == 1 ]]; then
+        echo '1'
+        exit 1
+       fi
+       dbt debug --target ${_DBT_TARGET} --profiles-dir .
+       if [[ $? == 1 ]]; then
+        echo '1'
+        exit 1
+       fi
+       dbt run --target ${_DBT_TARGET} --profiles-dir .
+       if [[ $? == 1 ]]; then
+        echo '1'
+        exit 1
+       fi
+       dbt test --data --target ${_DBT_TARGET} --profiles-dir .
+       if [[ $? == 1 ]]; then
+        echo '1'
+        exit 1
+       fi       
+timeout: 1200s
+tags: ['dbt']
+substitutions:
+  _DBT_VERSION: '0.21.0'
+  _DBT_TARGET: 'dev'
