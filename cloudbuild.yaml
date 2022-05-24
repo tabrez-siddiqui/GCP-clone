@@ -17,9 +17,9 @@ steps:
   - |
     pip install dbt-bigquery --user
 # DEV - DBT DEBUG
-- name: "python" 
-  id: 'DEV - DBT DEBUG'
-  args: ['dbt', 'debug','--target','dev']
+#- name: "python" 
+ # id: 'DEV - DBT DEBUG'
+  #args: ['dbt', 'debug','--target','dev']
 
 # DEV - DBT RUN
 - name: "abc" 
