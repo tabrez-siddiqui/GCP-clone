@@ -1,33 +1,48 @@
-steps:
-- name: 'ubuntu'
-  id: 'Adding dbt profile for Bigquery'
-  entrypoint: 'bash'
-  args:
-  - '-c'
-  - |
-    echo Copying ./profiles.yml to the ~/.dbt...
-    mkdir ~/.dbt
-    cp ./profiles.yml ~/.dbt/profiles.yml
-# set up python environment and install dbt
-- name: "python:3.7"
-  id: 'Setup Python Environment & Installing DBT'
-  entrypoint: 'bash'
-  args:
-  - '-c'
-  - |
-    pip install dbt-bigquery --user
-# DEV - DBT DEBUG
-#- name: "python" 
- # id: 'DEV - DBT DEBUG'
-  #args: ['dbt', 'debug','--target','dev']
-
-# DEV - DBT RUN
-- name: "abc" 
-  id: 'DEV - DBT RUN'
-  args: ['dbt', 'run','--target','dev']
-  env:
-  - 'PATH=${_PYTHON_PATH}'
-# Logging
+dbt debug --config-steps:
+  - name: 'ubuntu'
+    id: 'Adding dbt profile for Bigquery'
+    entrypoint: 'bash'
+    args:
+    - '-c'
+    - |
+      echo Copying ./profiles.yml to the ~/.dbt...
+      mkdir ~/.dbt
+      cp ./profiles.yml ~/.dbt/profiles.yml
+  # set up python environment and install dbt
+  - name: "python:3.7"
+    id: 'Setup Python Environment & Installing DBT'
+    entrypoint: 'bash'
+    args:
+    - '-c'
+    - |
+      pip install dbt-bigquery --user
+  
+  - name: 'ubuntu'
+    id: 'Check'
+    entrypoint: 'bash'
+    args:
+    - '-c'
+    - |
+      echo root
+      ls
+      ~/.dbt
+      cd ~/.dbt
+      ls
+  
+      
+  # DEV - DBT DEBUG
+  - name: "python:3.7" 
+    id: 'DEV - DBT DEBUG'
+    args: ['dbt', 'debug','--target','dev']
+  
+  # DEV - DBT RUN
+  - name: "python:3.7" 
+    id: 'DEV - DBT RUN'
+    args: ['dbt', 'run','--target','dev']
+    env:
+    - 'PATH=${_PYTHON_PATH}'
+  # Logging
 options:
   logging: CLOUD_LOGGING_ONLY
- #completed
+  #completed
+  
