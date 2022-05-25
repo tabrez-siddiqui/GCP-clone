@@ -23,11 +23,9 @@ steps:
     args:
     - '-c'
     - |
-      echo root
+      echo In root directory
       ls
-      ~/.dbt
-      cd ~/.dbt
-      ls
+      dbt debug
   
       
   # DEV - DBT DEBUG
