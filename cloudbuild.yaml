@@ -29,15 +29,10 @@ steps:
       ls
       dbt --version
       python --version
-  - name: 'xemuliam/dbt'
-      id: 'Check2'
-      entrypoint: 'bash'
-      args:
-      - |
-        echo Using Dbt Image
-        ls
-        dbt --version
-        python --version      
+  
+  - name: "maven"
+    args: ["mvn", "--version"] 
+     
   
       
   # DEV - DBT DEBUG
