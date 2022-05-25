@@ -1,4 +1,4 @@
-dbt debug --config-steps:
+steps:
   - name: 'ubuntu'
     id: 'Adding dbt profile for Bigquery'
     entrypoint: 'bash'
