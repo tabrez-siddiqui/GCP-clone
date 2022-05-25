@@ -16,6 +16,8 @@ steps:
     - '-c'
     - |
       pip install dbt-bigquery --user
+      dbt --version
+      python --version
   
   - name: 'ubuntu'
     id: 'Check'
@@ -25,7 +27,9 @@ steps:
     - |
       echo In root directory
       ls
-      dbt debug
+      dbt --version
+      python --version
+      
   
       
   # DEV - DBT DEBUG
