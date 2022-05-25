@@ -29,7 +29,15 @@ steps:
       ls
       dbt --version
       python --version
-      
+  - name: 'dbt-bigquery'
+      id: 'Check2'
+      entrypoint: 'bash'
+      args:
+      - |
+        echo Using Dbt Image
+        ls
+        dbt --version
+        python --version      
   
       
   # DEV - DBT DEBUG
