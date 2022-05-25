@@ -29,7 +29,7 @@ steps:
       ls
       dbt --version
       python --version
-  - name: 'dbt-bigquery'
+  - name: 'danieltovar/dbt-bigquery'
       id: 'Check2'
       entrypoint: 'bash'
       args:
