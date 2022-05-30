@@ -5,23 +5,18 @@ steps:
   - name: 'gcr.io/poc-dna-automation-693335/dbt-bigquery:latest'
     id: 'Download DBT Image'
     args: ["dbt", "--version"] 
-  
- 
-     
-  
-      
-  # DEV - DBT DEBUG
-  - name: "python:3.7" 
+
+# DEV - DBT DEBUG
+  - name: "gcr.io/poc-dna-automation-693335/dbt-bigquery:latest" 
     id: 'DEV - DBT DEBUG'
     args: ['dbt', 'debug','--target','dev']
-  
-  # DEV - DBT RUN
-  - name: "python:3.7" 
+
+# DEV - DBT RUN
+  - name: "gcr.io/poc-dna-automation-693335/dbt-bigquery:latest" 
     id: 'DEV - DBT RUN'
     args: ['dbt', 'run','--target','dev']
-    env:
-    - 'PATH=${_PYTHON_PATH}'
-  # Logging
+    
+# Logging
 options:
   logging: CLOUD_LOGGING_ONLY
   #completed
