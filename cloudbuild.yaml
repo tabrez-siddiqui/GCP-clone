@@ -4,7 +4,7 @@ steps:
     
   - name: 'gcr.io/poc-dna-automation-693335/dbt-bigquery:latest'
     id: 'Download DBT Image'
-    args: ["dbt", "run", "--help"] 
+    args: ["dbt", "run", "--project-dir" "." "--profiles-dir","."] 
 
 # DEV - DBT DEBUG
   - name: "gcr.io/poc-dna-automation-693335/dbt-bigquery:latest" 
