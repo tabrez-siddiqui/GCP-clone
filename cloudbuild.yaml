@@ -15,20 +15,14 @@ steps:
     args:
     - '-c'
     - |
-      pip install dbt-bigquery --user
-      dbt --version
+      pip install dbt-bigquery
       python --version
   
-  - name: 'ubuntu'
-    id: 'Check'
+  - name: 'xemuliam/dbt:bigquery'
+    id: 'Download DBT Image'
     entrypoint: 'bash'
     args:
-    - '-c'
-    - |
-      echo In root directory
-      ls
-      dbt --version
-      python --version
+    - dbt --version
   
   - name: "maven"
     args: ["mvn", "--version"] 
