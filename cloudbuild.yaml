@@ -1,7 +1,5 @@
 steps:
-  - name: "maven"
-    args: ["mvn", "--version"] 
-    
+# Download DBT Image
   - name: 'gcr.io/poc-dna-automation-693335/dbt-bigquery:latest'
     id: 'Download DBT Image'
     args: ["dbt", "--version"] 
@@ -9,7 +7,7 @@ steps:
 # DEV - DBT DEBUG
   - name: "gcr.io/poc-dna-automation-693335/dbt-bigquery:latest" 
     id: 'DEV - DBT DEBUG'
-    args: ['dbt', 'debug',"--project-dir","/workspace", "--profiles-dir","/workspace",'--target','dev']
+    args: ['dbt', 'debug',"--project-dir","/workspace", "--profiles-dir","/workspace"]
 
 # DEV - DBT RUN
   - name: "gcr.io/poc-dna-automation-693335/dbt-bigquery:latest" 
