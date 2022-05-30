@@ -1,24 +1,5 @@
 steps:
-  - name: 'ubuntu'
-    id: 'Adding dbt profile for Bigquery'
-    entrypoint: 'bash'
-    args:
-    - '-c'
-    - |
-      echo Copying ./profiles.yml to the ~/.dbt...
-      mkdir ~/.dbt
-      cp ./profiles.yml ~/.dbt/profiles.yml
-  # set up python environment and install dbt
-  - name: "python:3.7"
-    id: 'Setup Python Environment & Installing DBT'
-    entrypoint: 'bash'
-    args:
-    - '-c'
-    - |
-      pip install dbt-bigquery
-      python --version
-  
-  - name: 'xemuliam/dbt:bigquery'
+  - name: 'gcr.io/poc-dna-automation-693335/dbt-bigquery:latest'
     id: 'Download DBT Image'
     entrypoint: 'bash'
     args:
