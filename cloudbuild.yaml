@@ -1,5 +1,5 @@
 steps:
-   - name: "maven"
+  - name: "maven"
     args: ["mvn", "--version"] 
     
   - name: 'gcr.io/poc-dna-automation-693335/dbt-bigquery:latest'
