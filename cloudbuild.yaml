@@ -9,7 +9,7 @@ steps:
 # DEV - DBT DEBUG
   - name: "gcr.io/poc-dna-automation-693335/dbt-bigquery:latest" 
     id: 'DEV - DBT DEBUG'
-    args: ['dbt', 'debug',"--project-dir","/workspace/dbt_project.yml", "--profiles-dir","/workspace/profiles.yml",'--target','dev']
+    args: ['dbt', 'debug',"--project-dir","/workspace", "--profiles-dir","/workspace",'--target','dev']
 
 # DEV - DBT RUN
   - name: "gcr.io/poc-dna-automation-693335/dbt-bigquery:latest" 
