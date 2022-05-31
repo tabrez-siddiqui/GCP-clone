@@ -1,16 +1,16 @@
 steps:
 # Download DBT Image
-  - name: 'gcr.io/poc-dna-automation-693335/dbt-bigquery:latest'
+  - name: 'gcr.io/poc-dna-automation-693335/bigquery-git:latest'
     id: 'Download DBT Image'
     args: ["dbt", "--version"] 
 
 # DEV - DBT DEBUG
-  - name: "gcr.io/poc-dna-automation-693335/dbt-bigquery:latest" 
+  - name: "gcr.io/poc-dna-automation-693335/bigquery-git:latest" 
     id: 'DEV - DBT DEBUG'
     args: ['dbt', 'debug',"--project-dir","/workspace", "--profiles-dir","/workspace"]
 
 # DEV - DBT RUN
-  - name: "gcr.io/poc-dna-automation-693335/dbt-bigquery:latest" 
+  - name: "gcr.io/poc-dna-automation-693335/bigquery-git:latest" 
     id: 'DEV - DBT RUN'
     args: ['dbt', 'run','--target','dev']
     
