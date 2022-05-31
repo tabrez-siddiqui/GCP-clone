@@ -12,7 +12,7 @@ steps:
 # DEV - DBT RUN
   - name: "gcr.io/poc-dna-automation-693335/bigquery-git:latest" 
     id: 'DEV - DBT RUN'
-    args: ['dbt', 'run','--target','dev']
+    args: ['dbt', 'run',"--project-dir","/workspace", "--profiles-dir","/workspace"]
     
 # Logging
 options:
